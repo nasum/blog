@@ -18,7 +18,7 @@
     "textlint": "^11.6.1",
     "textlint-rule-max-ten": "^2.0.4",
     "textlint-rule-preset-japanese": "^5.0.0",
-    "vuepress": "^1.6.0"
+    "vuepress": "^1.7.0"
   },
   "dependencies": {
     "markdown-it-footnote": "^3.0.2",
