@@ -23,6 +23,6 @@
   "dependencies": {
     "markdown-it-footnote": "^3.0.2",
     "prism-themes": "^1.6.0",
-    "ress": "^3.0.0"
+    "ress": "^4.0.0"
   }
 }
