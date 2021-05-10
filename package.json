@@ -13,7 +13,7 @@
   "devDependencies": {
     "@vuepress/plugin-blog": "^1.9.4",
     "@vuepress/plugin-google-analytics": "^1.8.2",
-    "node-sass": "^5.0.0",
+    "node-sass": "^6.0.0",
     "sass-loader": "^11.0.1",
     "textlint": "^11.9.0",
     "textlint-rule-max-ten": "^3.0.0",
