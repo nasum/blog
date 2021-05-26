@@ -4,7 +4,7 @@ slug: vue-press-blog-plugin
 tag:
   - vuepress
   - vue
-auther: nasum
+author: nasum
 lang: ja
 ---
 

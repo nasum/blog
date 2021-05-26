@@ -5,24 +5,25 @@ tag:
   - Python
   - Django
   - TypeScript
-auther: nasum
+author: nasum
 lang: ja
 ---
-# DjangoのリクエストテストでAPIの戻り値の型を吐き出す
 
-DjangoでAPIを作るときDjango Rest Framework（以下DRF）を使うとSwaggerを使ってドキュメントを吐き出したり、そのドキュメントを利用して `@openapitools/openapi-generator-cli` を使いSDKを吐き出したりと何かとサーバサイドとフロントエンドでうまい具合に連携できて便利です。特にTypeScriptを使用する場合は型による恩恵が受けられるのでとても嬉しいと思います。
+# Django のリクエストテストで API の戻り値の型を吐き出す
 
-しかしDjangoのアプリケーションでDRFを使っているかというとそうでない場合もあり、その場合はサーバサイドとフロントエンドの間が断絶し、APIの返り値などはあたたかみのある手作業で型を作ったり作らなかったりすることが多いと思います。自分も仕事で開発しているアプリケーションはDRFを使用していないので、毎回APIの返り値は何だったかとバックエンドのコードを覗いたり、自分で手書きでTypeScriptのtypeを書いたりしていました。
+Django で API を作るとき Django Rest Framework（以下 DRF）を使うと Swagger を使ってドキュメントを吐き出したり、そのドキュメントを利用して `@openapitools/openapi-generator-cli` を使い SDK を吐き出したりと何かとサーバサイドとフロントエンドでうまい具合に連携できて便利です。特に TypeScript を使用する場合は型による恩恵が受けられるのでとても嬉しいと思います。
 
-なんとも微妙だなと思っていたところRailsではいい感じのgemが存在しました。[rspec-openapi](https://github.com/k0kubun/rspec-openapi)というRSpecのrequest specからOpenAPIのSchemaを吐き出すgemです。テストを書くことで安心感を得た上でフロントエンド開発に型をもたらすことで更に安心できるという一挙両得なソリューションです。
+しかし Django のアプリケーションで DRF を使っているかというとそうでない場合もあり、その場合はサーバサイドとフロントエンドの間が断絶し、API の返り値などはあたたかみのある手作業で型を作ったり作らなかったりすることが多いと思います。自分も仕事で開発しているアプリケーションは DRF を使用していないので、毎回 API の返り値は何だったかとバックエンドのコードを覗いたり、自分で手書きで TypeScript の type を書いたりしていました。
 
-そこで `rspec-openapi` のようにテストから入るならDjango Rest Frameworkを使わずにAPIの型を公開できるので、自分が抱えていた問題をうまく解決できると考えました。
+なんとも微妙だなと思っていたところ Rails ではいい感じの gem が存在しました。[rspec-openapi](https://github.com/k0kubun/rspec-openapi)という RSpec の request spec から OpenAPI の Schema を吐き出す gem です。テストを書くことで安心感を得た上でフロントエンド開発に型をもたらすことで更に安心できるという一挙両得なソリューションです。
 
-今回はDjangoのAPIのテストからTypeScriptのtypeを吐き出す仕組みを作ってみました。Open APIのSchemaを吐き出すことも考えたのですが、まずはミニマムで実装してみました。
+そこで `rspec-openapi` のようにテストから入るなら Django Rest Framework を使わずに API の型を公開できるので、自分が抱えていた問題をうまく解決できると考えました。
 
-## リクエストテストのためのClientを継承したGenTypeClientを作成する
+今回は Django の API のテストから TypeScript の type を吐き出す仕組みを作ってみました。Open API の Schema を吐き出すことも考えたのですが、まずはミニマムで実装してみました。
 
-DjangoのAPIのテストはざっと次のように書くと思います。
+## リクエストテストのための Client を継承した GenTypeClient を作成する
+
+Django の API のテストはざっと次のように書くと思います。
 
 ```python
 from django.test import Client, TestCase
@@ -36,9 +37,9 @@ class SampleAPIVTest(TestCase):
 
 ```
 
-`Client().get`でAPIを叩いてresponseを受け取っています。このresponseはstatus_codeやbodyを持っています。通常のテストだとbodyの中身を取り出して正しい値が入っているかテストを行うのですが、今回はここで取り出した中身のJSONを解析しtypeを吐き出すことにしました。
+`Client().get`で API を叩いて response を受け取っています。この response は status_code や body を持っています。通常のテストだと body の中身を取り出して正しい値が入っているかテストを行うのですが、今回はここで取り出した中身の JSON を解析し type を吐き出すことにしました。
 
-テストコードの中でtypeを出力するコードを書くのはテストコードとしては目的外のことをすることになるので微妙です。なので今回は `Client` のほうに細工をします。 `Client` をラップする `GenTypeClient` を作ります。
+テストコードの中で type を出力するコードを書くのはテストコードとしては目的外のことをすることになるので微妙です。なので今回は `Client` のほうに細工をします。 `Client` をラップする `GenTypeClient` を作ります。
 
 ```python
 class GenTypeClient(Client):
@@ -54,7 +55,7 @@ class GenTypeClient(Client):
     def output_type(self, func):
         def wrapper(*args, **kwargs):
             res = func(*args, **kwargs)
-            
+
             # 環境変数OUTPUT_TS_TYPEが有効でないときはそのまま返す
             if os.environ.get('OUTPUT_TS_TYPE') != 'true':
                 return res
@@ -90,15 +91,15 @@ class GenTypeClient(Client):
 
 ```
 
-単純に `Client` をラップし、条件が整えばファイルを出力するように作りました。環境変数の `OUTPUT_TYPE_TS` が `true` であることと、 `Content-Type` が `application/json` であればファイルが出力されます。CIでは `OUTPUT_TYPE_TS` が `true` にはしないのでテストのたびにファイルが出力されるのを防いでいます。
+単純に `Client` をラップし、条件が整えばファイルを出力するように作りました。環境変数の `OUTPUT_TYPE_TS` が `true` であることと、 `Content-Type` が `application/json` であればファイルが出力されます。CI では `OUTPUT_TYPE_TS` が `true` にはしないのでテストのたびにファイルが出力されるのを防いでいます。
 
-ここで出力されるファイル名はGETリクエストで `/api/tests/:id` だとすると `GETApiTestsID.ts` になります。1APIごとに1つtsファイルが出力されます。同じAPIを複数回テストするコードだと毎回上書きされてしまうところが微妙ですが、とりあえず最低限の出力が可能です。
+ここで出力されるファイル名は GET リクエストで `/api/tests/:id` だとすると `GETApiTestsID.ts` になります。1API ごとに 1 つ ts ファイルが出力されます。同じ API を複数回テストするコードだと毎回上書きされてしまうところが微妙ですが、とりあえず最低限の出力が可能です。
 
 このコードではファイルの作成と次に解説する `explore` に書き込み途中のファイルを渡すところまで行います。 `explore` で型情報を書き込み終えたら `close` して終えます。
 
-## JSONを走査し型を書き込むexploreを作る
+## JSON を走査し型を書き込む explore を作る
 
-実際にJSONを操作し型を書き込むexploreを作ります。
+実際に JSON を操作し型を書き込む explore を作ります。
 
 ```python
 def explore(edge, fileobj, num=1):
@@ -146,9 +147,9 @@ def _add_tab(fileobj, num):
 
 ```
 
-`explore` 関数では渡されたJSONの要素を一つ一つ確認し型を書き込んでいく処理が書かれています。再起させて一つずつ見ていくのですが、唯一listだけがうまい方法が見つけられず `Array<any>` でお茶を濁しています。
+`explore` 関数では渡された JSON の要素を一つ一つ確認し型を書き込んでいく処理が書かれています。再起させて一つずつ見ていくのですが、唯一 list だけがうまい方法が見つけられず `Array<any>` でお茶を濁しています。
 
-もしAPIで、
+もし API で、
 
 ```json
 {
@@ -162,19 +163,19 @@ def _add_tab(fileobj, num):
 }
 ```
 
-という返し方をされたときにどうtypeを組み立てるか、まだきれいな書き方が見えてない感じです。時間をかければ思いつきそうですが、一旦anyを許容しています。
+という返し方をされたときにどう type を組み立てるか、まだきれいな書き方が見えてない感じです。時間をかければ思いつきそうですが、一旦 any を許容しています。
 
-`explore` で要素ごとに型をつけていき、例えば次のようなJSONを食わせると。
+`explore` で要素ごとに型をつけていき、例えば次のような JSON を食わせると。
 
 ```json
 // /api/test/:id
 {
-    "hoge": "hoge",
-    "fuga": 0,
-    "foo": {
-        "bar": "bar"
-    },
-    "array": [1, 2, 3]
+  "hoge": "hoge",
+  "fuga": 0,
+  "foo": {
+    "bar": "bar"
+  },
+  "array": [1, 2, 3]
 }
 ```
 
@@ -184,19 +185,19 @@ def _add_tab(fileobj, num):
 /* eslint-disable */
 // THIS IS AN AUTOGENERATED FILE. DO NOT EDIT THIS FILE DIRECTLY.
 export type GETApiTestID = {
-    hoge: string;
-    fuga: number;
-    foo: {
-        bar: string
-    };
-    array: Array<any>
-}
+  hoge: string;
+  fuga: number;
+  foo: {
+    bar: string;
+  };
+  array: Array<any>;
+};
 ```
 
-あとはこれをAPIを呼ぶ部分で使用し活用します。
+あとはこれを API を呼ぶ部分で使用し活用します。
 
 ## まとめ
 
-きっと多分もっとスマートな方法はあるし、テストからJSONをゴニョゴニョしないでAPIの値を返すコードから生成するほうがひょっとしたら良いかも知れないけど、とりあえずAPIのリクエストテストから返り値の型を生成できました。
+きっと多分もっとスマートな方法はあるし、テストから JSON をゴニョゴニョしないで API の値を返すコードから生成するほうがひょっとしたら良いかも知れないけど、とりあえず API のリクエストテストから返り値の型を生成できました。
 
-配列がanyになってしまうことや複数回呼び出されたら上書きされてしまう問題等まだありますが、一旦これで目的は達せられました。もう少し改良してうまい具合にいったらパッケージの公開とかしてみたいですね。
+配列が any になってしまうことや複数回呼び出されたら上書きされてしまう問題等まだありますが、一旦これで目的は達せられました。もう少し改良してうまい具合にいったらパッケージの公開とかしてみたいですね。

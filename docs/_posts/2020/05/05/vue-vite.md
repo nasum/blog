@@ -1,14 +1,14 @@
 ---
-
 date: "2020-05-05"
 slug: vue-vite
 tag:
+  - vue
+  - vite
+author: nasum
+lang: ja
+---
 
-- vue
-- vite
-  auther: nasum
-  lang: ja
-  ---# バンドラ不要で SFC を配信できる Vue 専用 dev server「vite」を試してみる
+# バンドラ不要で SFC を配信できる Vue 専用 dev server「vite」を試してみる
 
 最近 Vue の開発と勉強に便利そうな[vite](https://github.com/vuejs/vite)というものを知りました。なんでも Single File Component でも、バンドルする必要なくコードを配信できる dev server のようです。
 

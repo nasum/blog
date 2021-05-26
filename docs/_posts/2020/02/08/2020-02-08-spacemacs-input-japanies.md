@@ -5,34 +5,33 @@ tag:
   - emacs
   - spacemacs
   - mozc
-auther: nasum
+author: nasum
 lang: ja
-
 ---
 
-# spacemacsでmozcを用いた日本語入力
+# spacemacs で mozc を用いた日本語入力
 
-最近普段使いするエディタをspacemacsにしようと思っていろいろ調べています。spacemacsで日本語入力をしようと思って詰まったのでその時のメモを残します。
+最近普段使いするエディタを spacemacs にしようと思っていろいろ調べています。spacemacs で日本語入力をしようと思って詰まったのでその時のメモを残します。
 
 環境
 
-| 名前 | バージョン |
-| :-------: | :------: |
-| emacs     | 26.3 |
-| spacemacs | 0.200.13 |
-| ubuntu    | 18.04 |
+|   名前    | バージョン |
+| :-------: | :--------: |
+|   emacs   |    26.3    |
+| spacemacs |  0.200.13  |
+|  ubuntu   |   18.04    |
 
-## emacs-mozc-binのインストール
+## emacs-mozc-bin のインストール
 
-emacsでmozcを使うためのパッケージemacs-mozc-binをインストールします。
+emacs で mozc を使うためのパッケージ emacs-mozc-bin をインストールします。
 
 ```bash
 $ sudo apt-get install emacs-mozc-bin
 ```
 
-## .spacemacsを編集
+## .spacemacs を編集
 
-spacemacsの設定 `.spacemacs` を次のように編集します。
+spacemacs の設定 `.spacemacs` を次のように編集します。
 
 `~/.spacemacs`
 
@@ -79,8 +78,8 @@ spacemacsの設定 `.spacemacs` を次のように編集します。
   )
 ```
 
-これでmozcによる日本語入力が可能になります。
+これで mozc による日本語入力が可能になります。
 
-## 参考URL
+## 参考 URL
 
-[EmacsからSpacemacsに乗り換えました-株式会社クイックのWebサービス開発blog](https://aimstogeek.hatenablog.com/entry/2017/02/09/101450)
+[Emacs から Spacemacs に乗り換えました-株式会社クイックの Web サービス開発 blog](https://aimstogeek.hatenablog.com/entry/2017/02/09/101450)
