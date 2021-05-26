@@ -37,15 +37,15 @@ lang: ja
 
 積層ケースを購入したので一つずつ Raspberry Pi を固定してヒートシンクを接着し、ケースにファンを取り付けていきます。
 
-![Raspberry Piを一つ固定](./k8s-on-r9i-01.jpg)
+![Raspberry Piを一つ固定](https://i.imgur.com/MdnfKFa.jpg)
 
 ネジ止めなど意外と根気がいるのでそれなりに余裕を持って作業すると良いです。
 
-![Raspberry Piを固定し終える](./k8s-on-r9i-02.jpg)
+![Raspberry Piを固定し終える](https://i.imgur.com/G64ErUF.jpg)
 
 全部設置できると見た目がかっこいい何かができます。正直これだけでも満足度が高いです。
 
-![Raspberry Piクラスタの最終形態](./k8s-on-r9i-03.jpg)
+![Raspberry Piクラスタの最終形態](https://i.imgur.com/TP6Wqxx.jpg)
 
 ## Raspberry Pi に ArchiLinux をインストールする
 
