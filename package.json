@@ -21,7 +21,7 @@
     "vuepress": "^1.8.2"
   },
   "dependencies": {
-    "markdown-it-footnote": "^3.0.2",
+    "markdown-it-footnote": "^3.0.3",
     "prism-themes": "^1.7.0",
     "ress": "^4.0.0"
   }
