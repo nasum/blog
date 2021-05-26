@@ -3,7 +3,7 @@ date: "2020-01-19"
 slug: tech-blog-start
 tag:
   - others
-auther: nasum
+author: nasum
 lang: ja
 ---
 

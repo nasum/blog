@@ -3,7 +3,7 @@ date: "2020-12-6"
 slug: emacs-init-el-dev
 tag:
   - emacs
-auther: nasum
+author: nasum
 lang: ja
 ---
 

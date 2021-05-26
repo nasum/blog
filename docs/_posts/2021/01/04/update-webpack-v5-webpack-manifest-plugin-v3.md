@@ -4,7 +4,7 @@ slug: update-webpack-v5-webpack-manifest-plugin-v3
 tag:
   - webpack
   - javascript
-auther: nasum
+author: nasum
 lang: ja
 ---
 

@@ -4,9 +4,11 @@ slug: deploy-blog-github-actions
 tag:
   - vuepress
   - github
-auther: nasum
+author: nasum
 lang: ja
----# VuePress で作ったブログを GitHubActions で GitHub Pages にデプロイする
+---
+
+# VuePress で作ったブログを GitHubActions で GitHub Pages にデプロイする
 
 [LAPRAS アウトプットリレー](https://daily.lapras.blog/)の 2 日目の記事です。
 

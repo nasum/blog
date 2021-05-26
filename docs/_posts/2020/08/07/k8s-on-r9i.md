@@ -5,7 +5,7 @@ tag:
   - Kubernetes
   - Raspberry Pi
   - Arch Linux
-auther: nasum
+author: nasum
 lang: ja
 ---
 
