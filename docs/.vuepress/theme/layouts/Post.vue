@@ -1,7 +1,7 @@
 <template>
   <div class="c-article-main">
     <ul class="c-tag-list">
-      <li class="c-tag-list__tag" v-for="tag in $frontmatter.tag">
+      <li class="c-tag-list__tag" v-for="tag in $frontmatter.tag" :key="tag">
         <router-link class="page-link" :to="`/tags/${tag}/`">
           {{ tag }}
         </router-link>
