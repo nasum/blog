@@ -850,7 +850,7 @@
   resolved "https://registry.yarnpkg.com/@textlint/ast-node-types/-/ast-node-types-12.0.0.tgz#23bd683f9fc04209ae28bff72954c8aa67c6b1ca"
   integrity sha512-qUjmlpz1vR3AStBA9RPDCVT0/pGtePvBJ5Vb/0PzTrnr04iFktG6P6B1VOmgTh8J9Kl/FonQFo3A9M1Q3UH+JA==
 
-"@textlint/ast-node-types@^4.2.1", "@textlint/ast-node-types@^4.2.4", "@textlint/ast-node-types@^4.2.5", "@textlint/ast-node-types@^4.4.2":
+"@textlint/ast-node-types@^4.2.1", "@textlint/ast-node-types@^4.2.4", "@textlint/ast-node-types@^4.4.2":
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/@textlint/ast-node-types/-/ast-node-types-4.4.2.tgz#d3fda5c9086baba04bc75440039ccf18415c8446"
   integrity sha512-m5brKbI7UY/Q8sbIZ7z1KB8ls04nRILshz5fPQ4EZ04jL19qrrUHJR8A6nK3vJ/GelkDWl4I0VDYSAjLEFQV8g==
@@ -5138,15 +5138,6 @@ klona@^2.0.4:
   resolved "https://registry.yarnpkg.com/klona/-/klona-2.0.4.tgz#7bb1e3affb0cb8624547ef7e8f6708ea2e39dfc0"
   integrity sha512-ZRbnvdg/NxqzC7L9Uyqzf4psi1OM4Cuc+sJAkQPjO6XkQIJTNbfK2Rsmbw8fx1p2mkZdp2FZYo2+LwXYY/uwIA==
 
-kuromoji@0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/kuromoji/-/kuromoji-0.1.1.tgz#4aabf39bcced8b8ad92d007a04a26be6da8477c9"
-  integrity sha1-Sqvzm8zti4rZLQB6BKJr5tqEd8k=
-  dependencies:
-    async "^2.0.1"
-    doublearray "0.0.2"
-    zlibjs "^0.2.0"
-
 kuromoji@0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/kuromoji/-/kuromoji-0.1.2.tgz#293f0d6706df006112137980588d5daac26d0790"
@@ -5155,13 +5146,6 @@ kuromoji@0.1.2:
     async "^2.0.1"
     doublearray "0.0.2"
     zlibjs "^0.3.1"
-
-kuromojin@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/kuromojin/-/kuromojin-2.1.1.tgz#5de1dbec4ffcc7cce57a10e75e751cd1ca384e38"
-  integrity sha512-bd5dfE9CdRBoRPiquE5uhzBrDOn2K3WuFeOWqZgM7DNtQhvS7P9IALy5MtDxXcnw7DLBAZ1A7DByPO5BhXdgew==
-  dependencies:
-    kuromoji "0.1.1"
 
 kuromojin@^3.0.0:
   version "3.0.0"
@@ -7716,17 +7700,7 @@ send@0.17.1:
     range-parser "~1.2.1"
     statuses "~1.5.0"
 
-sentence-splitter@^3.0.11, sentence-splitter@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/sentence-splitter/-/sentence-splitter-3.2.0.tgz#fb2cd2f61f40006643ba83d9acf4609233c1c68c"
-  integrity sha512-lKX2tZ1rsA9Tu0gW8vRmMDmIEJoZ1d7cKpzcbFZdUrSpCR6gy/7OPPh7jjT/6Oc6Z79ToUmC2l8tyTEGanVmiA==
-  dependencies:
-    "@textlint/ast-node-types" "^4.2.5"
-    concat-stream "^2.0.0"
-    object.values "^1.1.0"
-    structured-source "^3.0.2"
-
-sentence-splitter@^3.2.1:
+sentence-splitter@^3.0.11, sentence-splitter@^3.2.0, sentence-splitter@^3.2.1:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/sentence-splitter/-/sentence-splitter-3.2.2.tgz#b02a28c08bbad4bd3b6ec6f619d50e3fd3596d07"
   integrity sha512-hMvaodgK9Fay928uiQoTMEWjXpCERdKD2uKo7BbSyP+uWTo+wHiRjN+ZShyI99rW0VuoV4Cuw8FUmaRcnpN7Ug==
@@ -8419,17 +8393,6 @@ textlint-rule-helper@^2.0.0, textlint-rule-helper@^2.1.1:
     "@textlint/types" "^1.1.2"
     structured-source "^3.0.2"
     unist-util-visit "^1.1.0"
-
-textlint-rule-max-ten@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/textlint-rule-max-ten/-/textlint-rule-max-ten-3.0.0.tgz#96d3fac059b422c7d4f04a9d9063619f537ef105"
-  integrity sha512-J//KZyh877scA2M1d+zmmskkufBdwa9+NGfpZetrurEG54vyQ8hys75LSa47/OLbXVd6ieDFSOHLoV1PjH4gpA==
-  dependencies:
-    kuromojin "^2.1.1"
-    sentence-splitter "^3.2.0"
-    structured-source "^3.0.2"
-    textlint-rule-helper "^2.0.0"
-    textlint-util-to-string "^3.1.1"
 
 textlint-rule-max-ten@^4.0.2:
   version "4.0.2"
@@ -9671,11 +9634,6 @@ zepto@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/zepto/-/zepto-1.2.0.tgz#e127bd9e66fd846be5eab48c1394882f7c0e4f98"
   integrity sha1-4Se9nmb9hGvl6rSME5SIL3wOT5g=
-
-zlibjs@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/zlibjs/-/zlibjs-0.2.0.tgz#ae20f06243293d85c255563189f9b12f5b3ba1a0"
-  integrity sha1-riDwYkMpPYXCVVYxifmxL1s7oaA=
 
 zlibjs@^0.3.1:
   version "0.3.1"
