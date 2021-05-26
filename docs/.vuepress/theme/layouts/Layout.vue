@@ -45,6 +45,7 @@
 .c-blog {
   padding-bottom: 20px;
   &__title {
+    color: #2b6cb0;
     display: block;
     font-size: 24px;
     padding-bottom: 5px;
