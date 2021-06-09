@@ -6,7 +6,11 @@
           page.title
         }}</router-link>
         <ul class="c-tag-list">
-          <li class="c-blog__tag" v-for="tag in page.frontmatter.tag">
+          <li
+            class="c-blog__tag"
+            v-for="tag in page.frontmatter.tag"
+            :key="tag"
+          >
             <router-link :to="`/tags/${tag}/`">
               {{ tag }}
             </router-link>
