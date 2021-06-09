@@ -25,7 +25,7 @@ module.exports = {
         directories: [
           {
             id: "Index",
-            dirname: "_posts",
+            dirname: "_posts/articles",
             path: "/",
             itemPermalink: "/:year/:month/:day/:slug",
           },
