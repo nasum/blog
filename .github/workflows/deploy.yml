@@ -12,7 +12,7 @@ jobs:
           submodules: true
       - name: Update submodule
         run: |
-          git submodule update --remote
+          git submodule update --force
       - name: package install
         run: |
           yarn install
