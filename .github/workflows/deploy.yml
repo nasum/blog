@@ -2,12 +2,17 @@ name: deploy
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   deploy:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@master
+        with:
+          submodules: true
+      - name: Update submodule
+        run: |
+          git submodule update --remote
       - name: package install
         run: |
           yarn install

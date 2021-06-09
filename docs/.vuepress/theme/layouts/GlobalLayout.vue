@@ -10,7 +10,7 @@
     </header>
     <DefaultGlobalLayout />
     <footer class="l-footer">
-      <p class="copyright">Copyright 2020 nasum</p>
+      <p class="copyright">Copyright 2020-2021 nasum</p>
     </footer>
   </div>
 </template>

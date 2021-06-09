@@ -1,0 +1,3 @@
+[submodule "docs/_posts"]
+	path = docs/_posts
+	url = git@github.com:nasum/articles.git

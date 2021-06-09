@@ -1,8 +1,10 @@
 <template>
   <div class="l-main">
     <ul class="c-tag-list">
-      <li class="c-tag-list__tag" v-for="tag in tags">
-        <router-link class="page-link" :to="tag.path">{{tag.name}}: {{tag.pages.length}}</router-link>
+      <li class="c-tag-list__tag" v-for="tag in tags" :key="tag">
+        <router-link class="page-link" :to="tag.path"
+          >{{ tag.name }}: {{ tag.pages.length }}</router-link
+        >
       </li>
     </ul>
   </div>
